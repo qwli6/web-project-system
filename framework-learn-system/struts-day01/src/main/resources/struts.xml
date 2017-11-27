@@ -11,6 +11,9 @@
         <!-- 设置编码格式为 UTF-8 -->
         <constant name="struts.i18n.encoding" value="UTF-8"/>
 
+        <!-- 配置文件修改后，是否重新加载配置文件-->
+        <constant name="struts.configuration.xml.reload" value="true"/>
+
         <!-- 动态方法访问-->
         <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 
@@ -43,6 +46,18 @@
             <action name="dynamic" class="com.lqwit.web.action.DynamicMethodUserAction">
                 <result name="save">/save.jsp</result>
                 <result name="login">/delete.jsp</result>
+            </action>
+        </package>
+
+        <package name="people" namespace="/module4" extends="struts-default">
+            <action name="value" class="com.lqwit.web.action_b.PeopleAction" method="setValue">
+                <result name="setValue">/setValue.jsp</result>
+            </action>
+        </package>
+
+        <package name="people2" namespace="/module5" extends="struts-default">
+            <action name="value2" class="com.lqwit.web.action_b.People2Action" method="setValue2">
+                <result name="setValue">/setValue.jsp</result>
             </action>
         </package>
 </struts>

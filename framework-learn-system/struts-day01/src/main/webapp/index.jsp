@@ -31,6 +31,24 @@
     <a href="module3/dynamic!register.do">动态方法访问 Action -- 执行 register</a>
     <br/>
 
+    ====================================
+    <h1>使用模型驱动取值</h1>
+    <form action="module4/value.do" method="post">
+
+    姓名：<input type="text" name="name"/><br/>
+    年龄：<input type="text" name="age"/><br/>
+    <input type="submit" value="提交"/>
+    </form>
+
+    ====================================
+    <h1>使用属性驱动取值</h1>
+    <form action="module5/value2.do">
+
+        姓名：<input type="text" name="name"/><br/>
+        <input type="submit" value="提交"/>
+    </form>
+
+
 
 
 </body>
