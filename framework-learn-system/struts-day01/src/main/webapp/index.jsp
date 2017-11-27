@@ -42,7 +42,7 @@
 
     ====================================
     <h1>使用属性驱动取值</h1>
-    <form action="module5/value2.do">
+    <form action="module5/value2.do" method="post">
 
         姓名：<input type="text" name="name"/><br/>
         <input type="submit" value="提交"/>
