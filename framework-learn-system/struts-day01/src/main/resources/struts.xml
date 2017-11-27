@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+        <!-- 配置扩展为 .do -->
+        <constant name="struts.action.extension" value="do"/>
+        <!-- 设置为开发模式，保证在开发阶段可以在浏览器中看到异常信息-->
+        <constant name="struts.devMode" value="true"/>
+        <!-- 设置编码格式为 UTF-8 -->
+        <constant name="struts.i18n.encoding" value="UTF-8"/>
+
+        <!-- 动态方法访问-->
+        <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+
+        <!-- namespace 用于分割访问路径
+            这里如果需要访问 UserAction 中的方法，必须加上路径 /module
+            package 中的子标签用来分割模块，和包名一样作用
+         -->
+        <package name="user1" namespace="/module" extends="struts-default">
+            <action name="user" class="com.lqwit.web.action.UserAction" method="execute">
+
+                    <result name="success">/success.jsp</result>
+            </action>
+        </package>
+
+        <package name="user2" namespace="/module2" extends="struts-default">
+            <!-- 高版本 struts 动态方法访问和通配符访问必须配置如下标签，否则访问不到-->
+            <!--<global-allowed-methods>regex:.*</global-allowed-methods>-->
+            <action name="muluser_*" class="com.lqwit.web.action.MulMethodAction" method="{1}">
+                <result name="save">/save.jsp</result>
+                <result name="update">/update.jsp</result>
+                <result name="delete">/delete.jsp</result>
+                <allowed-methods>saveUser,deleteUser,updateUser</allowed-methods>
+            </action>
+        </package>
+    
+    
+        <package name="user3" namespace="/module3" extends="struts-default">
+            <!-- 高版本 struts 动态方法访问和通配符访问必须配置如下标签，否则访问不到-->
+            <global-allowed-methods>regex:.*</global-allowed-methods>
+            <action name="dynamic" class="com.lqwit.web.action.DynamicMethodUserAction">
+                <result name="save">/save.jsp</result>
+                <result name="login">/delete.jsp</result>
+            </action>
+        </package>
+</struts>
