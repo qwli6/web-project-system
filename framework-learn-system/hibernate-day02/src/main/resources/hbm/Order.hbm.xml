@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.itqiwen.hibernate.domain">
+    <!-- order 是关键字，使用 order 会导致建表不成功 -->
+    <class name="Order" table="order1">
+        <id name="oid" column="oid">
+            <generator class="uuid"/>
+        </id>
+
+        <property name="goodName" column="good_name"/>
+        <property name="address" column="good_address"/>
+        <property name="content" column="good_content"/>
+
+        <!-- 级联添加和级联删除 -->
+        <many-to-one name="user" column="id" class="User2" cascade="save-update, delete"/>
+    </class>
+
+</hibernate-mapping>

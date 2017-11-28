@@ -34,5 +34,7 @@
             引入 mapping 映射文件
         -->
         <mapping resource="hbm/User.hbm.xml"/>
+        <mapping resource="hbm/User2.hbm.xml"/>
+        <mapping resource="hbm/Order.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

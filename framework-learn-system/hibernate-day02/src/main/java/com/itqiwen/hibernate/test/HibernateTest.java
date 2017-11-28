@@ -13,6 +13,9 @@ import java.util.List;
 
 public class HibernateTest {
 
+
+
+
     public static void main(String[] args){
         Configuration configuration = new Configuration();
         configuration.configure();
