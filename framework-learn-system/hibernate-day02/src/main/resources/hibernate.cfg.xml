@@ -5,6 +5,13 @@
 <hibernate-configuration>
     <!-- 一个数据库对应一个 sessionfactory-->
     <session-factory>
+        <!--必须配置的几个参数
+            1. url
+            2. driver_class
+            3. username //数据库用户名
+            4. password //数据库密码
+            5. dialect //数据库方言
+        -->
         <property name="hibernate.connection.url">jdbc:mysql:///hibernate_day03</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.username">root</property>
@@ -12,11 +19,20 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
 
+        <!--
+            可选的一些参数
+            1. 是否显示执行的 sql 语句
+            2. 是否利用 hibernate 提供的自动建表功能
+            3. 是否格式化 sql 语句
+        -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.format_sql">true</property>
 
 
+        <!--
+            引入 mapping 映射文件
+        -->
         <mapping resource="hbm/User.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -114,4 +114,28 @@ public class HibernateTest {
         transaction.commit();
     }
 
+
+    /**
+     * 持久态对象有更新数据库的能力
+     * 并没有调用保存，但是 User 的名称已经被修改了
+     *
+     * 先执行了查询，然后执行了修改
+     */
+    @Test
+    public void testUpdate2(){
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        //执行了两次查询操作，第一次查询是从数据库中查询的，打印出了 sql 语句
+        User user = session.get(User.class, 5);
+        System.out.println(user);
+        user.setName("小王八");
+
+        transaction.commit();
+
+        //这次的查询并没有打印出 sql 语句，说明这次的查询是从缓存中取出来的
+        User u1 = session.get(User.class, 5);
+
+        System.out.println(u1);
+    }
 }
