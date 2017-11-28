@@ -63,5 +63,9 @@
             <action name="value3" class="com.lqwit.web.action_b.People3Action" method="setValue3">
                 <result name="setValue">/setValue.jsp</result>
             </action>
+
+            <action name="value4" class="com.lqwit.web.action_b.People4Action" method="setValue4">
+                <result name="setValue">/setValue.jsp</result>
+            </action>
         </package>
 </struts>

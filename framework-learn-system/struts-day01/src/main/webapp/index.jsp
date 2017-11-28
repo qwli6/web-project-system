@@ -59,6 +59,17 @@
         <input type="submit" value="提交"/>
     </form>
 
+    ====================================
+    <h1>封装数据为 map </h1>
+    <form action="module5/value4.do" method="post">
+
+        姓名：<input type="text" name="peopleMap['key1'].name"/><br/>
+        年龄：<input type="text" name="peopleMap['key1'].age"/><br/>
+        姓名：<input type="text" name="peopleMap['key2'].name"/><br/>
+        年龄：<input type="text" name="peopleMap['key2'].age"/><br/>
+        <input type="submit" value="提交"/>
+    </form>
+
 
 
 </body>
