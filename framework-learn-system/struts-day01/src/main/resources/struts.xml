@@ -5,7 +5,7 @@
 
 <struts>
         <!-- 配置扩展为 .do -->
-        <constant name="struts.action.extension" value="do"/>
+        <constant name="struts.action.extension" value="do,,"/>
         <!-- 设置为开发模式，保证在开发阶段可以在浏览器中看到异常信息-->
         <constant name="struts.devMode" value="true"/>
         <!-- 设置编码格式为 UTF-8 -->
@@ -23,8 +23,7 @@
          -->
         <package name="user1" namespace="/module" extends="struts-default">
             <action name="user" class="com.lqwit.web.action.UserAction" method="execute">
-
-                    <result name="success">/success.jsp</result>
+                <result name="success">/success.jsp</result>
             </action>
         </package>
 
@@ -66,6 +65,18 @@
 
             <action name="value4" class="com.lqwit.web.action_b.People4Action" method="setValue4">
                 <result name="setValue">/setValue.jsp</result>
+            </action>
+        </package>
+
+
+        <!-- 测试 Action 之间的跳转，比如添加用户成功后，直接跳转到用户列表-->
+        <package name="one" extends="struts-default" namespace="/module6">
+            <action name="oneAction" class="com.lqwit.web.action_c.OneAction" method="addUser">
+                <!-- 如果要跳转的 Action 在相同 package 内，则不需要加 namespace ，否则需要加 namespace -->
+                <result name="success" type="redirectAction">twoAction</result>
+            </action>
+            <action name="twoAction" class="com.lqwit.web.action_c.TwoAction" method="addTwoUser">
+                <result name="success">/success.jsp</result>
             </action>
         </package>
 </struts>

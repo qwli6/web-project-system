@@ -70,6 +70,9 @@
         <input type="submit" value="提交"/>
     </form>
 
+    ====================================
+    <h1>action 之间的跳转 </h1>
+    <a href="module6/oneAction.do">访问 oneAction</a><br/>
 
 
 </body>
