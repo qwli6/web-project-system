@@ -48,6 +48,16 @@
         <input type="submit" value="提交"/>
     </form>
 
+    ====================================
+    <h1>封装数据为 list </h1>
+    <form action="module5/value3.do" method="post">
+
+        姓名：<input type="text" name="peopleList[0].name"/><br/>
+        年龄：<input type="text" name="peopleList[0].age"/><br/>
+        姓名：<input type="text" name="peopleList[1].name"/><br/>
+        年龄：<input type="text" name="peopleList[1].age"/><br/>
+        <input type="submit" value="提交"/>
+    </form>
 
 
 

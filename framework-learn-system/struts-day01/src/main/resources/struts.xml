@@ -59,5 +59,9 @@
             <action name="value2" class="com.lqwit.web.action_b.People2Action" method="setValue2">
                 <result name="setValue">/setValue.jsp</result>
             </action>
+
+            <action name="value3" class="com.lqwit.web.action_b.People3Action" method="setValue3">
+                <result name="setValue">/setValue.jsp</result>
+            </action>
         </package>
 </struts>
