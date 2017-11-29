@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.itqiwen.hibernate.domain">
+    <class name="Role" table="role">
+        <id name="rid" column="rid">
+            <generator class="native"/>
+        </id>
+
+        <property name="roleName" column="role_name"/>
+
+        <!-- 多对多必须要有一方放弃外键的维护-->
+        <set name="peopleSet" table="sys_user_role" inverse="true">
+            <key column="rid"/>
+            <many-to-many column="pid" class="People"/>
+        </set>
+    </class>
+
+</hibernate-mapping>

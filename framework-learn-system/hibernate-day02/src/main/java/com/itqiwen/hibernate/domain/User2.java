@@ -11,6 +11,14 @@ public class User2 {
     private String address;
 
 
+    public User2() {
+    }
+
+    public User2(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
     private Set<Order> orderSet = new HashSet<Order>();
 
     public Set<Order> getOrderSet() {

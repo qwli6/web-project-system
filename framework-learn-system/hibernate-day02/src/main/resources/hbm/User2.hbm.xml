@@ -12,8 +12,10 @@
         <property name="address" column="address"/>
         <property name="age" column="age"/>
 
-        <!-- 一方，配置 set-->
-        <set name="orderSet" cascade="save-update, delete">
+        <!-- 一方，配置 set
+            inverser 在一方配置，放弃外键的维护
+        -->
+        <set name="orderSet" cascade="save-update, delete" inverse="true">
             <key column="id"/>
             <one-to-many class="Order"/>
         </set>

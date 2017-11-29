@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.itqiwen.hibernate.domain">
+    <class name="People" table="people">
+        <id name="pid" column="pid">
+            <generator class="uuid"/>
+        </id>
+
+        <property name="name" column="name"/>
+
+
+        <!--
+           当前对象的 set 集合名称
+           table 中间表的名称
+        -->
+        <set name="roleSet" table="sys_user_role" cascade="save-update">
+            <!-- 当前 javabean 对象在中间表的外键名称-->
+            <key column="pid"/>
+            <!--
+                set 集合中存放的对象
+            -->
+            <many-to-many class="Role" column="rid"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
