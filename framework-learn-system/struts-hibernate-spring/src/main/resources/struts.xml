@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.action.extension" value="do,,"/>
+
+    <!-- 原始方式 -->
+    <!--<package name="user" namespace="/" extends="struts-default">-->
+        <!--<action name="user" class="com.itqiwen.ssh.web.action.UserAction" method="userLogin">-->
+
+        <!--</action>-->
+    <!--</package>-->
+
+
+    <!-- 交个spring管理-->
+    <package name="user" namespace="/" extends="struts-default">
+        <action name="user" class="userAction" method="userLogin">
+
+        </action>
+    </package>
+</struts>
