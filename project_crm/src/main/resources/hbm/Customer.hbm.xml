@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.itqiwen.crm.entity">
+    <class name="Customer" table="cst_customer">
+        <id column="cust_id" name="custId">
+            <generator class="native"/>
+        </id>
+        <property name="custName" column="user_name"/>
+        <property name="custUserId" column="cust_user_id"/>
+        <property name="custCreateId" column="cust_create_id"/>
+        <property name="custSource" column="cust_source"/>
+        <property name="custIndustry" column="cust_industry"/>
+        <property name="custLevel" column="cust_level"/>
+        <property name="custLinkman" column="cust_linkman"/>
+        <property name="custPhone" column="cust_phone"/>
+        <property name="custMobile" column="cust_mobile"/>
+    </class>
+
+</hibernate-mapping>

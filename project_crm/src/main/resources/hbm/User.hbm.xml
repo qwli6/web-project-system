@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.itqiwen.crm.entity">
+    <class name="User" table="sys_user">
+        <id column="user_id" name="userId">
+            <generator class="native"/>
+        </id>
+        <property name="userName" column="user_name"/>
+        <property name="userCode" column="user_code"/>
+        <property name="userPassword" column="user_password"/>
+        <property name="userState" column="user_state"/>
+    </class>
+
+</hibernate-mapping>
