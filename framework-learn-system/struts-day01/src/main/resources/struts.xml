@@ -17,6 +17,7 @@
         <!-- 动态方法访问-->
         <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 
+
         <!-- namespace 用于分割访问路径
             这里如果需要访问 UserAction 中的方法，必须加上路径 /module
             package 中的子标签用来分割模块，和包名一样作用
@@ -79,4 +80,34 @@
                 <result name="success">/success.jsp</result>
             </action>
         </package>
+
+        <package name="interceptor" extends="struts-default" namespace="/">
+
+            <interceptors>
+                <!--定义拦截器 -->
+                <interceptor name="demoInterceptor" class="com.lqwit.web.interceptor.DemoInterceptor"/>
+
+                <!--
+                    第二种方式
+                    <interceptor-stack name="myStack">
+                        <interceptor-ref name="demoInterceptor"/>
+                        <interceptor-ref name="defaultStack"/>
+                    </interceptor-stack>
+                 -->
+
+
+            </interceptors>
+            <action name="interceptor" class="com.lqwit.web.interceptor.DemoAction" method="testInterceptor">
+                <!-- 引入自己的拦截器，如果引入了自己的，默认栈就不执行了，需要手动执行-->
+                <interceptor-ref name="demoInterceptor"/>
+                <!-- 手动引入默认栈的拦截器-->
+                <interceptor-ref name="defaultStack"/>
+
+                <!--
+                    引入自己定义的栈也可以
+                   <interceptor-ref name="myStack"/>
+                -->
+            </action>
+        </package>
+
 </struts>
