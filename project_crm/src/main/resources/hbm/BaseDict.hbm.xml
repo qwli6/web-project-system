@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.itqiwen.crm.entity">
+    <class name="BaseDict" table="base_dict">
+        <id column="dict_id" name="dictId">
+            <generator class="uuid"/>
+        </id>
+        <property name="dictTypeCode" column="dict_type_code"/>
+        <property name="dictTypeName" column="dict_type_name"/>
+        <property name="dictItemName" column="dict_item_name"/>
+        <property name="dictItemCode" column="dict_item_code"/>
+        <property name="dictSort" column="dict_sort"/>
+        <property name="dictEnable" column="dict_enable"/>
+        <property name="dictMemo" column="dict_memo"/>
+
+        <!--<set name="customerSet" table="base_dict">-->
+            <!--<key column="dict_id"/>-->
+            <!--<one-to-many class="Customer"/>-->
+        <!--</set>-->
+    </class>
+
+</hibernate-mapping>

@@ -7,15 +7,19 @@
         <id column="cust_id" name="custId">
             <generator class="native"/>
         </id>
-        <property name="custName" column="user_name"/>
+        <property name="custName" column="cust_name"/>
         <property name="custUserId" column="cust_user_id"/>
         <property name="custCreateId" column="cust_create_id"/>
-        <property name="custSource" column="cust_source"/>
-        <property name="custIndustry" column="cust_industry"/>
-        <property name="custLevel" column="cust_level"/>
+        <!--<property name="custSource" column="cust_source"/>-->
+        <!--<property name="custIndustry" column="cust_industry"/>-->
+        <!--<property name="custLevel" column="cust_level"/>-->
         <property name="custLinkman" column="cust_linkman"/>
         <property name="custPhone" column="cust_phone"/>
         <property name="custMobile" column="cust_mobile"/>
+
+        <many-to-one name="dictSource" class="BaseDict" column="cust_source"/>
+        <many-to-one name="dictIndustry" class="BaseDict" column="cust_industry"/>
+        <many-to-one name="dictLevel" class="BaseDict" column="cust_level"/>
     </class>
 
 </hibernate-mapping>

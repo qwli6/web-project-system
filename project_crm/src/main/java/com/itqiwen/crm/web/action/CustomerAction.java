@@ -1,9 +1,14 @@
 package com.itqiwen.crm.web.action;
 
+import com.itqiwen.crm.constants.ActionIndex;
 import com.itqiwen.crm.entity.Customer;
+import com.itqiwen.crm.entity.PageBean;
 import com.itqiwen.crm.service.CustomerService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.util.ValueStack;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -15,14 +20,40 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 
     private Customer customer = new Customer();
 
+    //当前页码
+    private Integer pageCode = 1;
+    public void setPageCode(Integer pageCode) {
+        if(pageCode == null){
+            pageCode = 1;
+        }
+        this.pageCode = pageCode;
+    }
+
+    //每页显示的条数
+    private Integer pageSize = 5;
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+
 
     @Resource
     private CustomerService customerService;
 
-    public String test(){
+    /**
+     * 获取页数
+     * @return
+     */
+    public String findByPage(){
 
-        System.out.println("访问action");
-        return NONE;
+        DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
+        PageBean<Customer> pageBean = customerService.findByPage(criteria, pageCode, pageSize);
+
+        ValueStack valueStack = ActionContext.getContext().getValueStack();
+        valueStack.set("pageBean", pageBean);
+        System.out.println(pageBean);
+
+        return ActionIndex.CUSTOMER_LIST;
     }
 
     public Customer getModel() {

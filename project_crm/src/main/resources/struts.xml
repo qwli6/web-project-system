@@ -17,7 +17,7 @@
     <package name="customer" namespace="/" extends="struts-default">
         <global-allowed-methods>regex:.*</global-allowed-methods>
         <action name="cst_*" class="customerAction" method="{1}">
-
+            <result name="customer_list">/customer_list.jsp</result>
         </action>
     </package>
 

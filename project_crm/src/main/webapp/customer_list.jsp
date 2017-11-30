@@ -7,7 +7,7 @@
 --%>
 <%@page language="java" contentType="text/html; UTF-8"
         pageEncoding="UTF-8" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -159,7 +159,29 @@
         </div>
         <div class="col-lg-10">
 
-            <span style="font-family: 'Songti TC',Serif; height: 200px;font-size: 36px;">欢迎登录客户关系管理系统</span>
+            <table class="table table-bordered">
+                <th>
+                    <td>客户名称</td>
+                    <td>客户级别</td>
+                    <td>客户来源</td>
+                    <td>联系人</td>
+                    <td>电话</td>
+                    <td>手机</td>
+                </th>
+
+                <c:forEach items="${pageBean.beanList}" var="customer">
+                    <tr>
+                        <td>${customer.custName}</td>
+                        <td>${customer.level.dictItemName}</td>
+                        <td></td>
+                        <td>${customer.custLinkman}</td>
+                        <td>${customer.custPhone}</td>
+                        <td>${customer.custMobile}</td>
+                    </tr>
+                </c:forEach>
+
+
+            </table>
         </div>
     </div>
 </div>

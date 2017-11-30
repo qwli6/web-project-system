@@ -9,4 +9,5 @@ public interface ActionIndex {
     String INDEX_PAGE = "index_jsp";
 
     String INDEX = "index";
+    String CUSTOMER_LIST = "customer_list";
 }
