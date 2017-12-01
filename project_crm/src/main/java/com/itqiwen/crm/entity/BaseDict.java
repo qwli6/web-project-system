@@ -1,5 +1,8 @@
 package com.itqiwen.crm.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 public class BaseDict {
 
     private String dictId;

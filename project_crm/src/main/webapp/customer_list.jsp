@@ -26,6 +26,35 @@
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
     <!--<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>-->
     <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript">
+        //提交分页查询的表单
+        function to_page(page) {
+            if(page){
+                $("page").val(page);
+            }
+            //表单中 form 标签加上 name 属性
+            document.customer_form.submit();
+        }
+
+
+        //页面加载完成
+
+        $(document).ready(
+            function () {
+                var url = "${pageContext.request.contextPath}/findByCode.do";
+                var param = {"dictTypeCode":"006"};
+                $.post
+                $.post(url, param, function(data){
+                    alert(data);
+                    //遍历
+                    $.each(function(i,n){
+                        alert(i + ":" + n.dictItemName);
+                    })
+                }, "json");
+            }
+        );
+
+    </script>
 </head>
 <body>
 
@@ -86,6 +115,7 @@
         </div>
     </div>
 </nav>
+<form id="customer_form" name="customer_form" action="cst_findByPage.do" method="post">
 <div class="container" style="padding-top: 100px;">
     <div class="row">
         <div class="col-lg-2">
@@ -160,33 +190,77 @@
         <div class="col-lg-10">
 
             <table class="table table-bordered">
-                <th>
-                    <td>客户名称</td>
-                    <td>客户级别</td>
-                    <td>客户来源</td>
-                    <td>联系人</td>
-                    <td>电话</td>
-                    <td>手机</td>
-                </th>
+                <tr>
+                    <th style="font-family: Songti SC, serif;font-size: 18px;">客户名称</th>
+                    <th style="font-family: Songti SC, serif;font-size: 18px;">客户级别</th>
+                    <th style="font-family: Songti SC, serif;font-size: 18px;">客户来源</th>
+                    <th style="font-family: Songti SC, serif;font-size: 18px;">联系人</th>
+                    <th style="font-family: Songti SC, serif;font-size: 18px;">电话</th>
+                    <th style="font-family: Songti SC, serif;font-size: 18px;">手机</th>
+                </tr>
 
                 <c:forEach items="${pageBean.beanList}" var="customer">
                     <tr>
-                        <td>${customer.custName}</td>
-                        <td>${customer.level.dictItemName}</td>
-                        <td></td>
-                        <td>${customer.custLinkman}</td>
-                        <td>${customer.custPhone}</td>
-                        <td>${customer.custMobile}</td>
+                        <td style="font-family: Songti SC, serif;font-size: 18px;">${customer.custName}</td>
+                        <td style="font-family: Songti SC, serif;font-size: 18px;">${customer.dictLevel.dictItemName}</td>
+                        <td style="font-family: Songti SC, serif;font-size: 18px;">${customer.dictSource.dictItemName}</td>
+                        <td style="font-family: Songti SC, serif;font-size: 18px;">${customer.custLinkman}</td>
+                        <td style="font-family: Georgia, serif;font-size: 18px;">${customer.custPhone}</td>
+                        <td style="font-family: Georgia, serif;font-size: 18px;">${customer.custMobile}</td>
                     </tr>
                 </c:forEach>
 
+                <tr>
+                    <td colspan="6" align="center">
+                        <span id="pageLink">
+                            <div>
+                                <span style="font-family: 'Songti TC',serif;font-size: 16px;">共</span>&nbsp;
+                                [<span style="font-family: Georgia,serif; font-size: 16px;">${pageBean.totalCount}</span>]&nbsp;
+                                <span style="font-family: 'Songti TC',serif;font-size: 16px;">条记录，</span>
+                                <span style="font-family: 'Songti TC',serif;font-size: 16px;">共</span>
+                                [<span style="font-family: Georgia,serif; font-size: 16px;">${pageBean.totalPage}</span>]
+                                <span style="font-family: 'Songti TC',serif;font-size: 16px;">页， 每页显示</span>
+                                
+                                <select name="pageSize">
+                                    <option value="3" <c:if test="${pageBean.pageSize==3}">selected</c:if>>3</option>
+                                    <option value="5" <c:if test="${pageBean.pageSize==5}">selected</c:if>>5</option>
+                                </select>
+                                <span style="font-family: 'Songti TC',serif;font-size: 16px;">条。</span>
+                                &nbsp;&nbsp;
+                                <!-- 当前页小于大于 1 才有上一页-->
+                                <c:if test="${pageBean.pageCode > 1}">
+                                    <span style="font-family: 'Songti TC',serif;font-size: 16px;">
+                                        [<a href="javascript:to_page(${pageBean.pageCode} -1)">上一页</a>]
+                                    </span>
+                                </c:if>
 
+                                &nbsp;&nbsp;
+                                <strong><span style="font-family: 'Georgia',serif; font-size: 16px">${pageBean.pageCode}</span></strong>
+                                &nbsp;&nbsp;
+                                <c:if test="${pageBean.pageCode < pageBean.totalPage}">
+                                    <span style="font-family: 'Songti TC',serif;font-size: 16px;">
+                                        [<a href="javascript:to_page(${pageBean.pageCode}+1)">下一页</a>]
+                                    </span>
+                                </c:if>
+                                &nbsp;&nbsp;
+                                <span style="font-family: 'Songti TC',serif;font-size: 16px;">到</span>
+
+                                     <input type="text" size="3" id="page" name="pageCode" />
+
+                                <span style="font-family: 'Songti TC',serif;font-size: 16px;">页</span>
+
+                                <input type="button" value="Go" onclick="to_page()"/>
+                            </div>
+                        </span>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
 </div>
+</form>
 
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" rel="script" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" rel="script" src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -13,7 +13,9 @@
 
 
 
-    <!-- 交个spring管理-->
+
+
+    <!-- 交给spring管理-->
     <package name="customer" namespace="/" extends="struts-default">
         <global-allowed-methods>regex:.*</global-allowed-methods>
         <action name="cst_*" class="customerAction" method="{1}">
@@ -37,4 +39,11 @@
             <allowed-methods>loginOut,login,registerPage,register,checkUserCode,loginPage,index</allowed-methods>
         </action>
     </package>
+
+
+    <!--<package name="dict" namespace="/" extends="struts-default">-->
+        <!--<global-allowed-methods>regex:.*</global-allowed-methods>-->
+        <!--<action name="dict_*" class="dictAction" method="{1}">-->
+        <!--</action>-->
+    <!--</package>-->
 </struts>

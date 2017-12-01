@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="mysqlJpa" transaction-type="RESOURCE_LOCAL">
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql:///hibernate_day03"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="student"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+
+
+            <!--
+                可选的一些参数
+                1. 是否显示执行的 sql 语句
+                2. 是否利用 hibernate 提供的自动建表功能
+                3. 是否格式化 sql 语句
+            -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

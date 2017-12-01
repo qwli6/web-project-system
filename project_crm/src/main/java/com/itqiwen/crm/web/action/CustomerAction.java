@@ -46,6 +46,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
      */
     public String findByPage(){
 
+        System.out.println("当前页码：pageCode " + pageCode);
         DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
         PageBean<Customer> pageBean = customerService.findByPage(criteria, pageCode, pageSize);
 
