@@ -1,11 +1,9 @@
 package com.itqiwen.hibernate.domain2;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity
-public class Customer {
+public class Customer2 {
 
     @Id
     @GeneratedValue
