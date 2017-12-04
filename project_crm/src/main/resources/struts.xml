@@ -9,19 +9,36 @@
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.action.extension" value="do,,"/>
+    <!-- 设置上传文件的最大尺寸 20M-->
+    <constant name="struts.multipart.maxSize" value="20971520"/>
+
 
 
 
     <package name="customer" namespace="/customer" extends="struts-default">
+        <interceptors>
+            <interceptor name="userInterceptor" class="com.itqiwen.crm.web.interceptor.UserInterceptor"/>
+        </interceptors>
         <global-allowed-methods>regex:.*</global-allowed-methods>
         <action name="*" class="customerAction" method="{1}">
             <result name="customer_list">/customer_list.jsp</result>
             <result name="customer_add_page">/add_customer.jsp</result>
+            <interceptor-ref name="userInterceptor">
+                <!-- 排除不拦截的方法-->
+                <param name="excludeMethods">register,login, regPage, logPage, checkCode</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack">
+                <!-- 上传文件允许的扩展名-->
+                <param name="fileUpload.allowedExtensions">.jpg,.txt</param>
+            </interceptor-ref>
         </action>
     </package>
 
 
     <package name="user" namespace="/" extends="struts-default">
+        <interceptors>
+            <interceptor name="userInterceptor" class="com.itqiwen.crm.web.interceptor.UserInterceptor"/>
+        </interceptors>
         <global-results>
             <result name="login" type="redirectAction">user_loginPage</result>
         </global-results>
@@ -32,23 +49,43 @@
             <result name="login_jsp">/login.jsp</result>
             <result name="index_jsp" type="redirectAction">user_index</result>
             <result name="index">/index.jsp</result>
+            <interceptor-ref name="userInterceptor"/>
+            <interceptor-ref name="defaultStack">
+                <!-- 上传文件允许的扩展名-->
+                <param name="fileUpload.allowedExtensions">.jpg,.txt</param>
+            </interceptor-ref>
         </action>
     </package>
 
 
     <package name="dict" namespace="/dict" extends="struts-default">
+        <interceptors>
+            <interceptor name="userInterceptor" class="com.itqiwen.crm.web.interceptor.UserInterceptor"/>
+        </interceptors>
         <global-allowed-methods>regex:.*</global-allowed-methods>
         <!-- 直接通过方法名称来访问 -->
         <action name="*" class="dictAction" method="{1}">
-
+            <interceptor-ref name="userInterceptor"/>
+            <interceptor-ref name="defaultStack">
+                <!-- 上传文件允许的扩展名-->
+                <param name="fileUpload.allowedExtensions">.jpg,.txt</param>
+            </interceptor-ref>
         </action>
+
     </package>
 
 
     <package name="lkm" namespace="/lkm" extends="struts-default">
+        <interceptors>
+            <interceptor name="userInterceptor" class="com.itqiwen.crm.web.interceptor.UserInterceptor"/>
+        </interceptors>
         <global-allowed-methods>regex:.*</global-allowed-methods>
         <action name="*" class="linkManAction" method="{1}">
-
+            <interceptor-ref name="userInterceptor"/>
+            <interceptor-ref name="defaultStack">
+                <!-- 上传文件允许的扩展名-->
+                <param name="fileUpload.allowedExtensions">.jpg,.txt</param>
+            </interceptor-ref>
         </action>
     </package>
 </struts>
