@@ -1,16 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: liqiwen
-  Date: 2017/11/30
-  Time: 10:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@page language="java" contentType="text/html; UTF-8"
         pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -23,9 +15,10 @@
     <meta name="description" content="36氪是一个关注互联网创业的科技博客"/>
     <link rel="shortcut icon" href="//www.36kr.com/favicon.ico"/>
 
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
-    <!--<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>-->
-    <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         //提交分页查询的表单
         function to_page(page) {
@@ -38,12 +31,10 @@
 
 
         //页面加载完成
-
         $(document).ready(
             function () {
-                var url = "${pageContext.request.contextPath}/findByCode.do";
+                var url = "${pageContext.request.contextPath}/dict/findByCode.do";
                 var param = {"dictTypeCode":"006"};
-                $.post
                 $.post(url, param, function(data){
                     alert(data);
                     //遍历
@@ -61,53 +52,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <!-- The mobile navbar-toggle button can be safely removed since you do not need it in a non-responsive implementation -->
-            <a class="navbar-brand" href="#"><img src="images/logo.png" style="height: 25px; width:48px;"></a>
+            <a class="navbar-brand" href="#"><img src="${pageContext.request.contextPath}/images/logo.png" style="height: 25px; width:48px;"></a>
         </div>
-        <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
         <div id="navbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="#">开氪</a></li>
-                <li><a href="#"><span style="font-family: Georgia,serif; font-size: 16px">7 x 24 h</span>&nbsp;快讯</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">创业者服务 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">投资人服务 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">联系我们 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="">当前登录：${u1.userCode}</a></li>
                 <li><a href="user_loginOut.do">安全退出</a></li>
@@ -118,77 +65,10 @@
 <form id="customer_form" name="customer_form" action="cst_findByPage.do" method="post">
 <div class="container" style="padding-top: 100px;">
     <div class="row">
-        <div class="col-lg-2">
-            <div class="btn-group-vertical" role="group" align="center">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span style="font-family: 'Songti TC',Serif; font-size: 16px;">客户管理</span>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="">新增客户</a></li>
-                        <li><a href="cst_findByPage.do">客户列表</a></li>
-                    </ul>
-                </div>
+        <!-- 静态引入左边菜单-->
+        <%@include file="left_menu.jsp"%>
 
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span style="font-family: 'Songti TC',Serif; font-size: 16px;">联系人管理</span>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Dropdown link</a></li>
-                        <li><a href="#">Dropdown link</a></li>
-                    </ul>
-                </div>
-
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span style="font-family: 'Songti TC',Serif; font-size: 16px;">客户拜访管理</span>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Dropdown link</a></li>
-                        <li><a href="#">Dropdown link</a></li>
-                    </ul>
-                </div>
-
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span style="font-family: 'Songti TC',Serif; font-size: 16px;">综合查询</span>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Dropdown link</a></li>
-                        <li><a href="#">Dropdown link</a></li>
-                    </ul>
-                </div>
-
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span style="font-family: 'Songti TC',Serif; font-size: 16px;">统计分析</span>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Dropdown link</a></li>
-                        <li><a href="#">Dropdown link</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span style="font-family: 'Songti TC',Serif; font-size: 16px;">移动管理</span>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Dropdown link</a></li>
-                        <li><a href="#">Dropdown link</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="col-lg-10">
-
             <table class="table table-bordered">
                 <tr>
                     <th style="font-family: Songti SC, serif;font-size: 18px;">客户名称</th>
@@ -260,7 +140,6 @@
 </div>
 </form>
 
-<script type="text/javascript" rel="script" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" rel="script" src="bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

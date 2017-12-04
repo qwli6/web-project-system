@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.itqiwen.crm.entity">
+    <class name="LinkMan" table="linkman">
+        <id column="linkman_id" name="linkManId">
+            <generator class="native"/>
+        </id>
+        <property column="linkman_name" name="linkManName"/>
+        <property column="linkman_sex" name="linkManSex"/>
+        <property column="linkman_phone" name="linkManPhone"/>
+        <property column="linkman_mobile" name="linkManMobile"/>
+        <property column="linkman_email" name="linkManEmail"/>
+        <property column="linkman_qq" name="linkManQQ"/>
+        <property column="linkman_position" name="linkManPosition"/>
+        <property column="linkman_memo" name="linkManMemo"/>
+
+        <many-to-one name="customer" class="Customer" column="linkman_cust_id"/>
+
+    </class>
+
+</hibernate-mapping>

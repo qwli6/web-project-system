@@ -9,7 +9,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FastJsonUtil {
+/**
+ * 需要依赖
+ *
+ *  <dependency>
+	 <groupId>com.alibaba</groupId>
+	 <artifactId>fastjson</artifactId>
+	 <version>1.2.41</version>
+ 	</dependency>
+ */
+public class JsonUtil {
 	
 	/**
 	 * 将对象转成json串

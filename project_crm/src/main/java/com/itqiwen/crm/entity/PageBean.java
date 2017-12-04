@@ -7,17 +7,9 @@ import java.util.List;
  */
 public class PageBean<T> {
 	
-	// 当前页
 	private int pageCode;
-	
-	// 总页数
-	// private int totalPage;
-	
-	// 总记录数
 	private int totalCount;
-	// 每页显示的记录条数
 	private int pageSize;
-	// 每页显示的数据
 	private List<T> beanList;
 	
 	public int getPageCode() {
@@ -41,10 +33,6 @@ public class PageBean<T> {
 			return totalPage + 1;
 		}
 	}
-	
-	/*public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
-	}*/
 	
 	public int getTotalCount() {
 		return totalCount;

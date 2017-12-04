@@ -1,5 +1,8 @@
 package com.itqiwen.crm.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Customer {
 
     private Long custId;
@@ -7,12 +10,6 @@ public class Customer {
     private String custName;
     private String custUserId;
     private String custCreateId;
-    //客户来源
-//    private String custSource;
-//    //客户所属行业
-//    private String custIndustry;
-//    //客户的等级，初中高级
-//    private String custLevel;
     //客户的联系人
     private String custLinkman;
     //客户的电话
@@ -26,6 +23,17 @@ public class Customer {
     private BaseDict dictSource;
     private BaseDict dictIndustry;
     private BaseDict dictLevel;
+
+
+    private Set<LinkMan> linkManSet = new HashSet<LinkMan>();
+
+    public void setLinkManSet(Set<LinkMan> linkManSet) {
+        this.linkManSet = linkManSet;
+    }
+
+    public Set<LinkMan> getLinkManSet() {
+        return linkManSet;
+    }
 
     public BaseDict getDictLevel() {
         return dictLevel;
@@ -83,29 +91,6 @@ public class Customer {
         this.custCreateId = custCreateId;
     }
 
-//    public String getCustSource() {
-//        return custSource;
-//    }
-//
-//    public void setCustSource(String custSource) {
-//        this.custSource = custSource;
-//    }
-//
-//    public String getCustIndustry() {
-//        return custIndustry;
-//    }
-//
-//    public void setCustIndustry(String custIndustry) {
-//        this.custIndustry = custIndustry;
-//    }
-//
-//    public String getCustLevel() {
-//        return custLevel;
-//    }
-//
-//    public void setCustLevel(String custLevel) {
-//        this.custLevel = custLevel;
-//    }
 
     public String getCustLinkman() {
         return custLinkman;

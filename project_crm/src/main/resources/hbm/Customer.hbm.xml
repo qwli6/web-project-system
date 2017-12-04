@@ -20,6 +20,13 @@
         <many-to-one name="dictSource" class="BaseDict" column="cust_source"/>
         <many-to-one name="dictIndustry" class="BaseDict" column="cust_industry"/>
         <many-to-one name="dictLevel" class="BaseDict" column="cust_level"/>
+
+
+        <set name="linkManSet" inverse="true" >
+            <key column="linkman_cust_id"/>
+            <one-to-many class="LinkMan"/>
+        </set>
+
     </class>
 
 </hibernate-mapping>

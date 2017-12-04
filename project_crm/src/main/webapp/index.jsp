@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: liqiwen
-  Date: 2017/11/30
-  Time: 10:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@page language="java" contentType="text/html; UTF-8"
         pageEncoding="UTF-8" %>
 
@@ -24,8 +17,9 @@
     <link rel="shortcut icon" href="//www.36kr.com/favicon.ico"/>
 
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
-    <!--<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>-->
     <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -37,48 +31,6 @@
         </div>
         <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
         <div id="navbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="#">开氪</a></li>
-                <li><a href="#"><span style="font-family: Georgia,serif; font-size: 16px">7 x 24 h</span>&nbsp;快讯</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">创业者服务 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">投资人服务 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">联系我们 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="">当前登录：${u1.userCode}</a></li>
                 <li><a href="user_loginOut.do">安全退出</a></li>
@@ -97,8 +49,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="">新增客户</a></li>
-                        <li><a href="cst_findByPage.do">客户列表</a></li>
+                        <li><a href="${pageContext.request.contextPath}/customer/addPage">新增客户</a></li>
+                        <li><a href="${pageContext.request.contextPath}/customer/list">客户列表</a></li>
                     </ul>
                 </div>
 
@@ -164,7 +116,6 @@
     </div>
 </div>
 
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" rel="script" src="bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

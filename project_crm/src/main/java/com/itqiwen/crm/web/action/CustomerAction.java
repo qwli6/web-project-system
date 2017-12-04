@@ -20,6 +20,10 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 
     private Customer customer = new Customer();
 
+    public Customer getModel() {
+        return customer;
+    }
+
     //当前页码
     private Integer pageCode = 1;
     public void setPageCode(Integer pageCode) {
@@ -40,16 +44,10 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     @Resource
     private CustomerService customerService;
 
-    /**
-     * 获取页数
-     * @return
-     */
-    public String findByPage(){
 
-        System.out.println("当前页码：pageCode " + pageCode);
+    public String list(){
         DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
         PageBean<Customer> pageBean = customerService.findByPage(criteria, pageCode, pageSize);
-
         ValueStack valueStack = ActionContext.getContext().getValueStack();
         valueStack.set("pageBean", pageBean);
         System.out.println(pageBean);
@@ -57,7 +55,16 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         return ActionIndex.CUSTOMER_LIST;
     }
 
-    public Customer getModel() {
-        return customer;
+
+    public String addPage(){
+        return ActionIndex.CUSTOMER_ADD_PAGE;
     }
+
+    public String add(){
+
+        System.out.println("保存客户封装数据：" + customer);
+
+        return ActionIndex.CUSTOMER_LIST;
+    }
+
 }

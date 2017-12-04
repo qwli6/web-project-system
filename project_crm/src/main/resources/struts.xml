@@ -12,38 +12,43 @@
 
 
 
-
-
-
-    <!-- 交给spring管理-->
-    <package name="customer" namespace="/" extends="struts-default">
+    <package name="customer" namespace="/customer" extends="struts-default">
         <global-allowed-methods>regex:.*</global-allowed-methods>
-        <action name="cst_*" class="customerAction" method="{1}">
+        <action name="*" class="customerAction" method="{1}">
             <result name="customer_list">/customer_list.jsp</result>
+            <result name="customer_add_page">/add_customer.jsp</result>
         </action>
     </package>
 
 
     <package name="user" namespace="/" extends="struts-default">
-
-        <!-- 配置全局的结果页面 -->
         <global-results>
             <result name="login" type="redirectAction">user_loginPage</result>
         </global-results>
 
+        <global-allowed-methods>regex:.*</global-allowed-methods>
         <action name="user_*" class="userAction" method="{1}">
             <result name="register_jsp">/register.jsp</result>
             <result name="login_jsp">/login.jsp</result>
             <result name="index_jsp" type="redirectAction">user_index</result>
             <result name="index">/index.jsp</result>
-            <allowed-methods>loginOut,login,registerPage,register,checkUserCode,loginPage,index</allowed-methods>
         </action>
     </package>
 
 
-    <!--<package name="dict" namespace="/" extends="struts-default">-->
-        <!--<global-allowed-methods>regex:.*</global-allowed-methods>-->
-        <!--<action name="dict_*" class="dictAction" method="{1}">-->
-        <!--</action>-->
-    <!--</package>-->
+    <package name="dict" namespace="/dict" extends="struts-default">
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+        <!-- 直接通过方法名称来访问 -->
+        <action name="*" class="dictAction" method="{1}">
+
+        </action>
+    </package>
+
+
+    <package name="lkm" namespace="/lkm" extends="struts-default">
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+        <action name="*" class="linkManAction" method="{1}">
+
+        </action>
+    </package>
 </struts>
