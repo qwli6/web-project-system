@@ -45,6 +45,10 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     private CustomerService customerService;
 
 
+    /**
+     * 查询客户列表
+     * @return
+     */
     public String list(){
         DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
         PageBean<Customer> pageBean = customerService.findByPage(criteria, pageCode, pageSize);

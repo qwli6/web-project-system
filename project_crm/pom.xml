@@ -154,19 +154,38 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+        <!-- log4j.api 和 log4j-core -->
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
+
+
+
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl
+            1.2 版本之后，就不在需要 standard 这个实现包
+        -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
-        <dependency>
-            <groupId>org.apache.taglibs</groupId>
-            <artifactId>taglibs-standard-impl</artifactId>
-            <version>1.2.5</version>
-        </dependency>
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.taglibs</groupId>-->
+            <!--<artifactId>taglibs-standard-impl</artifactId>-->
+            <!--<version>1.2.5</version>-->
+        <!--</dependency>-->
 
 
         <!--
@@ -193,7 +212,6 @@
     </dependencies>
 
     <build>
-        <!-- 配置 tomcat7 启动插件，直接通过 maven 命令 mvn tomcat7:run 运行即可-->
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
@@ -207,7 +225,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-
 </project>

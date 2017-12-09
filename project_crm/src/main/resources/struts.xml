@@ -23,37 +23,29 @@
         <action name="*" class="customerAction" method="{1}">
             <result name="customer_list">/customer_list.jsp</result>
             <result name="customer_add_page">/add_customer.jsp</result>
-            <interceptor-ref name="userInterceptor">
-                <!-- 排除不拦截的方法-->
-                <param name="excludeMethods">register,login, regPage, logPage, checkCode</param>
-            </interceptor-ref>
-            <interceptor-ref name="defaultStack">
-                <!-- 上传文件允许的扩展名-->
-                <param name="fileUpload.allowedExtensions">.jpg,.txt</param>
-            </interceptor-ref>
+            <!--<interceptor-ref name="userInterceptor">-->
+                <!--&lt;!&ndash; 排除不拦截的方法&ndash;&gt;-->
+                <!--<param name="excludeMethods">register,login, regPage, logPage, checkCode</param>-->
+            <!--</interceptor-ref>-->
+            <!--<interceptor-ref name="defaultStack">-->
+                <!--&lt;!&ndash; 上传文件允许的扩展名&ndash;&gt;-->
+                <!--<param name="fileUpload.allowedExtensions">.jpg,.txt</param>-->
+            <!--</interceptor-ref>-->
         </action>
     </package>
 
 
-    <package name="user" namespace="/" extends="struts-default">
-        <interceptors>
-            <interceptor name="userInterceptor" class="com.itqiwen.crm.web.interceptor.UserInterceptor"/>
-        </interceptors>
+    <package name="user" namespace="/user" extends="struts-default">
         <global-results>
-            <result name="login" type="redirectAction">user_loginPage</result>
+            <result name="login" type="redirectAction">loginPage</result>
         </global-results>
-
         <global-allowed-methods>regex:.*</global-allowed-methods>
-        <action name="user_*" class="userAction" method="{1}">
+
+        <action name="*" class="userAction" method="{1}">
             <result name="register_jsp">/register.jsp</result>
             <result name="login_jsp">/login.jsp</result>
-            <result name="index_jsp" type="redirectAction">user_index</result>
+            <result name="index_jsp" type="redirectAction">index</result>
             <result name="index">/index.jsp</result>
-            <interceptor-ref name="userInterceptor"/>
-            <interceptor-ref name="defaultStack">
-                <!-- 上传文件允许的扩展名-->
-                <param name="fileUpload.allowedExtensions">.jpg,.txt</param>
-            </interceptor-ref>
         </action>
     </package>
 

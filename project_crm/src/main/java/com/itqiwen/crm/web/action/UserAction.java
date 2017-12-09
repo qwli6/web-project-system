@@ -37,6 +37,11 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
         return userCode;
     }
 
+
+    /**
+     * 登录系统
+     * @return
+     */
     public String login(){
         User u1 = userService.findUser(user);
         if(u1 != null){
@@ -47,17 +52,21 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
         }
     }
 
-    public String registerPage(){
+    public String regPage(){
         return ActionIndex.REGISTER_PAGE;
     }
 
 
-    public String loginPage(){
+    public String logPage(){
         return ActionIndex.LOGIN_PAGE;
     }
 
 
-    public String loginOut(){
+    /**
+     * 登出系统
+     * @return
+     */
+    public String logOut(){
         ServletActionContext.getRequest().getSession().removeAttribute("u1");
         return LOGIN;
     }
@@ -70,7 +79,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     public String index(){
         return ActionIndex.INDEX;
     }
-
 
 
 

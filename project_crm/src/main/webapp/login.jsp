@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,15 +7,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>用户登录</title>
-    <meta name="keywords" content="36氪, 36kr, 36tr, 创业, 想创业, 投资, 融资, 创投媒体, 创业公司, 科技新闻, 移动互联网, 资讯平台, 开放日, 互联网创业"/>
+    <meta name="keywords" content="36氪, 36kr, 36tr, 创业, 想创业, 投资,
+    融资, 创投媒体, 创业公司, 科技新闻, 移动互联网, 资讯平台, 开放日, 互联网创业"/>
     <meta name="description" content="36氪是一个关注互联网创业的科技博客"/>
     <link rel="shortcut icon" href="//www.36kr.com/favicon.ico"/>
 
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
-    <!--<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>-->
-    <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
     <style>
         body {
             padding-top: 200px;
@@ -65,27 +67,24 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <!-- The mobile navbar-toggle button can be safely removed since you do not need it in a non-responsive implementation -->
-            <a class="navbar-brand" href="#"><img src="images/logo.png" style="height: 25px; width:48px;"></a>
+            <a class="navbar-brand" href="#"><img src="${pageContext.request.contextPath}/images/logo.png" style="height: 25px; width:48px;"></a>
         </div>
-        <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
         <div id="navbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="user_loginPage.do">登录</a></li>
-                <li><a href="user_registerPage.do">注册</a></li>
+                <li><a href="<s:url namespace="/user" action="logPage"/>">登录</a></li>
+                <li><a href="<s:url namespace="/user" action="regPage"/>">注册</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
 
 <div class="container" style="background-color: white; padding: 32px; max-width: 400px; border-radius: 8px;">
 
-    <form class="form-signin" action="user_login.do" method="post">
+    <form class="form-signin" action="<s:url namespace="/user" action="login"/>" method="post">
         <div style="margin-bottom: 20px">
             <h3 style="display: inline">账号密码登录</h3>
-            <a style="float: right; text-decoration: none" href="user_registerPage.do">注册新用户</a>
+            <a style="float: right; text-decoration: none" href="<s:url namespace="/user" action="regPage"/>">注册新用户</a>
         </div>
-        <!--<label for="inputEmail" class="sr-only">用户名</label>-->
         <input type="text" id="userCode" name="userCode" class="form-control login" placeholder="用户名" required autofocus>
         <br/>
 
@@ -98,8 +97,5 @@
         <button class="btn btn-lg btn-success btn-block" type="submit" style="font-size: 16px; font-family: 'Songti TC',serif">立即登录</button>
     </form>
 </div>
-
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" rel="script" src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; UTF-8"
         pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,9 +10,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>后台管理主页</title>
-    <meta name="keywords" content="36氪, 36kr, 36tr, 创业, 想创业, 投资, 融资, 创投媒体, 创业公司, 科技新闻, 移动互联网, 资讯平台, 开放日, 互联网创业"/>
+    <meta name="keywords" content="36氪, 36kr, 36tr, 创业, 想创业, 投资, 融资,
+    创投媒体, 创业公司, 科技新闻, 移动互联网, 资讯平台, 开放日, 互联网创业"/>
     <meta name="description" content="36氪是一个关注互联网创业的科技博客"/>
     <link rel="shortcut icon" href="//www.36kr.com/favicon.ico"/>
 
@@ -33,7 +34,7 @@
         //页面加载完成
         $(document).ready(
             function () {
-                var url = "${pageContext.request.contextPath}/dict/findByCode.do";
+                var url = "<s:action name="findByCode" namespace="/dict"/>"
                 var param = {"dictTypeCode":"006"};
                 $.post(url, param, function(data){
                     alert(data);
@@ -48,22 +49,24 @@
     </script>
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#"><img src="${pageContext.request.contextPath}/images/logo.png" style="height: 25px; width:48px;"></a>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img src="${pageContext.request.contextPath}/images/logo.png"
+                                                      style="height: 25px; width:48px;">
+                </a>
+            </div>
+            <div id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="">当前登录：${u1.userCode}</a></li>
+                    <li><a href="<s:action name="logOut" namespace="/dict"/>">安全退出</a></li>
+                </ul>
+            </div>
         </div>
-        <div id="navbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="">当前登录：${u1.userCode}</a></li>
-                <li><a href="user_loginOut.do">安全退出</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<form id="customer_form" name="customer_form" action="cst_findByPage.do" method="post">
-<div class="container" style="padding-top: 100px;">
+    </nav>
+    <form id="customer_form" name="customer_form" action="#" method="post">
+        <div class="container" style="padding-top: 100px;">
     <div class="row">
         <!-- 静态引入左边菜单-->
         <%@include file="left_menu.jsp"%>
@@ -138,8 +141,6 @@
         </div>
     </div>
 </div>
-</form>
-
-
+    </form>
 </body>
 </html>
